@@ -8,10 +8,16 @@ public class Student {
     private String lastName;
     private ArrayList<Double> examScores;
 
-    public Student(String firstName, String lastName, ArrayList<Double> examScores){
+    public Student(String firstName, String lastName, ArrayList<Double> examScores){  //Double[] ????
         this.firstName = firstName;
         this.lastName = lastName;
         this.examScores = examScores;
+    }
+
+    @Override
+    public String toString(){ // EMORY
+        return String.format("Student Name: %s %s\n> Average Score: %s\n> %s",
+                this.firstName, this.lastName, (int) this.getAverageExamScore(), this.getExamScores());
     }
 
     public String getFirstName() {
@@ -30,24 +36,32 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public void getExamScores() {
-        System.out.println(examScores);
+    public String getExamScores() {
+        StringBuilder examScores = new StringBuilder("Exam Scores:");
+        for (int i = 0; i < this.examScores.size(); i++){
+                examScores.append("\n\tExam ").append(i + 1).append(" -> ").append(String.format("%.0f",this.examScores.get(i)));
+        }
+        return examScores.toString();
+    }
+
+    public void setExamScore(int examNumber, double newScore){
+        this.examScores.set(examNumber, newScore);
     }
 
     public void addExamScore(double examScore){
-        examScores.add(examScore);
+        this.examScores.add(examScore);
     }
 
-    public void setExamScore(int examNumber, double examScore) {
-        examScores.add(examNumber, examScore);
+    public int getNumberOfExamsTake(){ // returns total number
+        return examScores.size();
     }
 
-    public void getAverageExamScore(){
+    public double getAverageExamScore(){
         double sumExamScore = 0.0;
-        for (double value : examScores){
+        for (double value : this.examScores){
             sumExamScore += value;
         }
-        System.out.println(sumExamScore/examScores.size());
+        return sumExamScore/this.examScores.size();
     }
 
 }
