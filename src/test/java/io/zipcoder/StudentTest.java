@@ -9,17 +9,19 @@ import java.util.List;
 
 public class StudentTest {
 
-//    @Test
-//    public void constructorTest(){
-//        Student student = new Student("Emory", "Miller", new ArrayList<>());
-//
-//        String expectedFirstName = "Emory";
-//        String expectedLastName = "Miller";
-//
-//
-//
-//        Assert.assertEquals();
-//    }
+    @Test
+    public void constructorTest(){
+        Student student = new Student("Emory", "Miller", new ArrayList<>());
+
+        String expectedFirstName = "Emory";
+        String expectedLastName = "Miller";
+
+        String actualFirstName = student.getFirstName();
+        String actualLastName = student.getLastName();
+
+        Assert.assertEquals(expectedFirstName, actualFirstName);
+        Assert.assertEquals(expectedLastName, actualLastName);
+    }
 
     @Test
     public void getExamScoresTest(){
@@ -40,7 +42,6 @@ public class StudentTest {
 
     @Test
     public void addExamScoreTest(){
-        // This test should print out an exam score to test this. No Assert.assertEquals
         // : Given
         String firstName = "Leon";
         String lastName = "Hunter";
