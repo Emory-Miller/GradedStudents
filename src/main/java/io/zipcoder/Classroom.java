@@ -65,13 +65,6 @@ public class Classroom {
                 }
             }
         }
-
-//        for (int j = temp + 1; j < students.length ; j++){
-//            if (students[j] == null){
-//                students[count] = students[j-1];
-//                students[j-1] = null;
-//            }
-//        }
     }
 
     public void addStudent(Student student){
