@@ -3,9 +3,7 @@ package io.zipcoder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ClassroomTest {
 
@@ -113,6 +111,81 @@ public class ClassroomTest {
 
         // Then
         Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getStudentsByScoreTest(){
+        Double[] s1Scores = { 150.0, 150.0 };
+        ArrayList<Double> s1ScoresList = new ArrayList<>(List.of(s1Scores));
+        Double[] s2Scores = { 225.0, 25.0 };
+        ArrayList<Double> s2ScoresList = new ArrayList<>(List.of(s2Scores));
+        Double[] s3Scores = { 175.0, 150.0 };
+        ArrayList<Double> s3ScoresList = new ArrayList<>(List.of(s3Scores));
+        Double[] s4Scores = { 225.0, 25.0 };
+        ArrayList<Double> s4ScoresList = new ArrayList<>(List.of(s4Scores));
+
+
+        Student s1 = new Student("student", "one", s1ScoresList);
+        Student s2 = new Student("student", "two", s2ScoresList);
+        Student s3 = new Student("student", "three", s3ScoresList);
+        Student s4 = new Student("student", "four", s4ScoresList);
+
+        Student[] students = {s1, s2, s3, s4};
+        Classroom classroom = new Classroom(students);
+
+        classroom.getStudentsByScore();
+
+        Student[] actual = classroom.getStudents();
+        String scoreSort = Arrays.toString(actual);
+        Student[] expected = {s3, s1, s2, s4};
+
+        Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getGradeBookTest1(){
+        Double[] s1Scores = { 100.0, 70.0 };
+        ArrayList<Double> s1ScoresList = new ArrayList<>(List.of(s1Scores));
+        Double[] s2Scores = { 80.0, 75.0 };
+        ArrayList<Double> s2ScoresList = new ArrayList<>(List.of(s2Scores));
+        Double[] s3Scores = { 95.0, 85.0 };
+        ArrayList<Double> s3ScoresList = new ArrayList<>(List.of(s3Scores));
+        Double[] s4Scores = { 100.0, 100.0 };
+        ArrayList<Double> s4ScoresList = new ArrayList<>(List.of(s4Scores));
+        Double[] s5Scores = { 50.0, 75.0 };
+        ArrayList<Double> s5ScoresList = new ArrayList<>(List.of(s5Scores));
+        Double[] s6Scores = { 75.0, 75.0 };
+        ArrayList<Double> s6ScoresList = new ArrayList<>(List.of(s6Scores));
+        Double[] s7Scores = { 100.0, 75.0 };
+        ArrayList<Double> s7ScoresList = new ArrayList<>(List.of(s7Scores));
+        Double[] s8Scores = { 95.0, 75.0 };
+        ArrayList<Double> s8ScoresList = new ArrayList<>(List.of(s8Scores));
+        Double[] s9Scores = { 75.0, 85.0 };
+        ArrayList<Double> s9ScoresList = new ArrayList<>(List.of(s9Scores));
+        Double[] s10Scores = { 95.0, 85.0 };
+        ArrayList<Double> s10ScoresList = new ArrayList<>(List.of(s10Scores));
+
+
+        Student s1 = new Student("student", "one", s1ScoresList);
+        Student s2 = new Student("student", "two", s2ScoresList);
+        Student s3 = new Student("student", "three", s3ScoresList);
+        Student s4 = new Student("student", "four", s4ScoresList);
+        Student s5 = new Student("student", "five", s5ScoresList);
+        Student s6 = new Student("student", "six", s6ScoresList);
+        Student s7 = new Student("student", "seven", s7ScoresList);
+        Student s8 = new Student("student", "eight", s8ScoresList);
+        Student s9 = new Student("student", "nine", s9ScoresList);
+        Student s10 = new Student("student", "ten", s10ScoresList);
+
+        Student[] students = {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10};
+        Classroom classroom = new Classroom(students);
+
+        HashMap<Student, String> gB = classroom.getGradeBook();
+
+        String expected = "A";
+        String actual = gB.get(s4);
+
+        Assert.assertEquals(expected,actual);
     }
 
 }

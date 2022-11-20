@@ -15,7 +15,7 @@ public class Student {
     }
 
     @Override
-    public String toString(){ // EMORY
+    public String toString(){
         return String.format("Student Name: %s %s\n> Average Score: %s\n> %s",
                 this.firstName, this.lastName, (int) this.getAverageExamScore(), this.getExamScores());
     }
